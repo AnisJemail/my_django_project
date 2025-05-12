@@ -1,0 +1,20 @@
+# Fichiers Python compilés
+*.pyc
+*.pyo
+__pycache__
+
+# Environnement virtuel
+venv/
+.venv/
+
+# Fichiers de base de données
+db.sqlite3
+
+# Django secret key
+*.env
+
+# Fichiers de logs
+*.log
+
+# Fichiers de migrations Django
+*.log
