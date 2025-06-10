@@ -24,7 +24,7 @@ jobs:
           --health-retries 5
 
     env:
-      DJANGO_SETTINGS_MODULE: my_django_project.settings
+      DJANGO_SETTINGS_MODULE: app
       SECRET_KEY: ${{ secrets.SECRET_KEY }}
       DEBUG: False
       POSTGRES_DB: test_db
