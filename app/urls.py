@@ -15,8 +15,22 @@ Including another URLconf
     2. Add a URL to urlpatterns:  path('blog/', include('blog.urls'))
 """
 from django.contrib import admin
-from django.urls import path
+from django.urls import path, include
+from django.http import HttpResponse
+from django_prometheus import exports
+
+def trigger_error(request):
+    division_by_zero = 1 / 0
+
+def home_view(request):
+    return HttpResponse("Bienvenue sur la page d'accueil de mon app Django By Jemail Anis !")
 
 urlpatterns = [
+    path('', home_view, name='home'),
     path('admin/', admin.site.urls),
+    # path("super-admin/", admin.site.urls),
+    path('sentry-debug/', trigger_error),
+    # path('metrics/', include('django_prometheus.urls')),
+    path('', include('django_prometheus.urls')), #Cela ajoute les URLs internes de django_prometheus, y compris /metrics, directement à la racine.
+
 ]
