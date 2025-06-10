@@ -30,7 +30,7 @@ jobs:
       POSTGRES_DB: test_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      POSTGRES_HOST: localhost
+      DB_HOST: localhost
 
     steps:
     - name: Checkout code
