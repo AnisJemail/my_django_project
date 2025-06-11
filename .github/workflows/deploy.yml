@@ -19,7 +19,7 @@ jobs:
           POSTGRES_USER: postgres
           POSTGRES_PASSWORD: postgres
           POSTGRES_DB: test_db
-        ports: ["5431:5432"]
+        #ports: ["5431:5432"]
         options: >-
           --health-cmd pg_isready
           --health-interval 10s
@@ -33,7 +33,7 @@ jobs:
       POSTGRES_DB: test_db
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
-      DB_HOST: localhost
+      DB_HOST: postgres
 
     steps:
     - name: Checkout code
@@ -56,7 +56,11 @@ jobs:
       run: pip install --upgrade pip && pip install -r requirements.txt
 
     - name: Wait for Postgres
-      run: until pg_isready -h localhost -p 5432; do sleep 1; done
+      run: |
+        until pg_isready -h postgres -p 5432; do
+          echo "Waiting for postgres..."
+          sleep 1
+        done
 
     - name: Migrate & Test
       run: |
