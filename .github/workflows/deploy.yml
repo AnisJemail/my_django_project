@@ -56,11 +56,7 @@ jobs:
       run: pip install --upgrade pip && pip install -r requirements.txt
 
     - name: Wait for Postgres
-      run: |
-        until pg_isready -h localhost -p 5432; do
-          echo "Waiting for postgres..."
-          sleep 1
-        done
+      run: until pg_isready -h localhost -p 5432; do sleep 1; done
 
     - name: Migrate & Test
       run: |
