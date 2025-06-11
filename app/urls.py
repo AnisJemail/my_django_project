@@ -23,7 +23,7 @@ def trigger_error(request):
     division_by_zero = 1 / 0
 
 def home_view(request):
-    return HttpResponse("Bienvenue sur la page d'accueil de mon app Django By Jemail Anis !")
+    return HttpResponse("Bienvenue sur la page d'accueil de mon app Django By Yomna Jemail !")
 
 urlpatterns = [
     path('', home_view, name='home'),
